@@ -1,0 +1,179 @@
+.appContainer {
+  min-height: 97vh; /* Changed to 100vh to cover full viewport height */
+  display: flex;
+  flex-direction: column;
+  background-color: #f3f4f6;
+  transition: all 0.3s ease-in-out;
+}
+
+.appContainer.dark {
+  background-color: #111827;
+}
+
+.nav {
+  width: 100%;
+  max-width: 1200px;
+  margin: 16px auto;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: fixed; /* Changed to fixed to stay at top */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  z-index: 1000;
+}
+
+.dark .nav {
+  background-color: #1f2937;
+}
+
+.navLink {
+  margin-right: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4b5563;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.navLink:hover {
+  color: #3b82f6;
+}
+
+.dark .navLink {
+  color: #d1d5db;
+}
+
+.dark .navLink:hover {
+  color: #60a5fa;
+}
+
+.navLink.active {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.dark .navLink.active {
+  color: #60a5fa;
+}
+
+.welcome {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1f2937;
+  margin-right: 16px;
+}
+
+.dark .welcome {
+  color: #d1d5db;
+}
+
+.logout {
+  padding: 8px 16px;
+  background-color: #ef4444;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout:hover {
+  background-color: #dc2626;
+}
+
+.dark .logout {
+  background-color: #dc2626;
+}
+
+.dark .logout:hover {
+  background-color: #b91c1c;
+}
+
+.logo {
+  height: 40vmin;
+  max-height: 80px;
+  pointer-events: none;
+  margin: 16px auto;
+  display: block;
+}
+
+.contentContainer {
+  margin-top: 80px; /* Adjust based on navbar height */
+  padding: 24px;
+  flex: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .appContainer {
+    background-color: #111827;
+  }
+  .nav {
+    background-color: #1f2937;
+  }
+  .navLink {
+    color: #d1d5db;
+  }
+  .navLink:hover {
+    color: #60a5fa;
+  }
+  .navLink.active {
+    color: #60a5fa;
+  }
+  .welcome {
+    color: #d1d5db;
+  }
+  .logout {
+    background-color: #dc2626;
+  }
+  .logout:hover {
+    background-color: #b91c1c;
+  }
+}
+
+@media (max-width: 600px) {
+  .appContainer {
+    padding: 16px;
+  }
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+  .navLink {
+    margin-bottom: 8px;
+  }
+  .welcome {
+    margin-bottom: 8px;
+  }
+  .logo {
+    max-height: 60px;
+  }
+  .contentContainer {
+    margin-top: 120px; /* Adjust for taller navbar on mobile */
+    padding: 16px;
+  }
+}

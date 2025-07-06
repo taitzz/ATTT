@@ -1,0 +1,148 @@
+.formContainer {
+  max-width: 500px;
+  width: 100%;
+  margin: 80px auto;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.formContainer.dark {
+  background-color: #1f2937;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+  color: #1f2937;
+}
+
+.dark .title {
+  color: #ffffff;
+}
+
+.input {
+  width: 95%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  color: #1f2937;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.dark .input {
+  border-color: #4b5563;
+  background-color: #374151;
+  color: #ffffff;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.textarea {
+  width: 95%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  color: #1f2937;
+  font-size: 16px;
+  min-height: 120px;
+  resize: vertical;
+  transition: all 0.2s ease;
+}
+
+.dark .textarea {
+  border-color: #4b5563;
+  background-color: #374151;
+  color: #ffffff;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background-color: #2563eb;
+}
+
+.button:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+.dark .button {
+  background-color: #2563eb;
+}
+
+.dark .button:hover {
+  background-color: #1d4ed8;
+}
+
+.dark .button:disabled {
+  background-color: #6b7280;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.dark .error {
+  color: #f87171;
+}
+
+@media (prefers-color-scheme: dark) {
+  .formContainer {
+    background-color: #1f2937;
+  }
+  .title {
+    color: #ffffff;
+  }
+  .input,
+  .textarea {
+    border-color: #4b5563;
+    background-color: #374151;
+    color: #ffffff;
+  }
+  .button {
+    background-color: #2563eb;
+  }
+  .button:hover {
+    background-color: #1d4ed8;
+  }
+  .button:disabled {
+    background-color: #6b7280;
+  }
+  .error {
+    color: #f87171;
+  }
+}
