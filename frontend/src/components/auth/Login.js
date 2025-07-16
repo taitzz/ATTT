@@ -16,30 +16,35 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    setLoading(true);
-    setError('');
-    try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+  setLoading(true);
+  setError('');
+  try {
+    const response = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+    console.log('Login response:', response.data);
+    if (Array.isArray(response.data.user)) {
+      setUser(response.data.user[0]); // Lấy user đầu tiên hoặc xử lý mảng
+    } else {
       setUser(response.data.user);
-      Swal.fire({
-        icon: 'success',
-        title: 'Thành công',
-        text: response.data.message || 'Đăng nhập thành công!',
-        timer: 2000,
-        showConfirmButton: false,
-      });
-      navigate('/home'); // Chuyển hướng về trang home
-    } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Lỗi',
-        text: error.response?.data?.error || 'Đăng nhập thất bại',
-      });
-      setError(error.response?.data?.error || 'Đăng nhập thất bại');
-    } finally {
-      setLoading(false);
     }
-  };
+    Swal.fire({
+      icon: 'success',
+      title: 'Thành công',
+      text: response.data.message || 'Đăng nhập thành công!',
+      timer: 2000,
+      showConfirmButton: false,
+    });
+    navigate('/posts');
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Lỗi',
+      text: error.response?.data?.error || 'Đăng nhập thất bại',
+    });
+    setError(error.response?.data?.error || 'Đăng nhập thất bại');
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleRegister = async () => {
     setLoading(true);

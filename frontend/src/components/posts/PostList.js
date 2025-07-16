@@ -99,7 +99,7 @@ const PostList = ({ isAllPosts }) => {
         const response = await axios.put(`http://localhost:5000/api/posts/${post.id}`, {
           title: formValues.title,
           content: formValues.content,
-          user_id: post.user_id,
+          user_id: user.id,
         });
         setPosts(posts.map((p) => (p.id === post.id ? { ...p, title: formValues.title, content: formValues.content } : p)));
         Swal.fire({
@@ -146,7 +146,7 @@ const PostList = ({ isAllPosts }) => {
                 Được tạo bởi: <span>{post.username}</span> |{' '}
                 {format(new Date(post.created_at), 'dd/MM/yyyy, HH:mm', { locale: vi })}
               </p>
-              {user && !isAllPosts && (
+              {user && !isAllPosts && post.user_id === user.id && (
                 <div className={styles.buttonGroup}>
                   <button onClick={() => handleEdit(post)} className={styles.button} disabled={loading}>
                     Sửa

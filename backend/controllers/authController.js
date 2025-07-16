@@ -5,13 +5,18 @@ exports.login = async (req, res) => {
   const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
   try {
     const pool = await poolPromise;
+    console.log('Login query:', query);
     const result = await pool.request().query(query);
+    console.log('Login result:', result.recordset);
     if (result.recordset.length > 0) {
-      res.json({ message: 'Login successful', user: result.recordset[0] });
+      // Loại bỏ trùng lặp (nếu có)
+      const uniqueUsers = [...new Map(result.recordset.map(item => [item.id, item])).values()];
+      res.json({ message: 'Login successful', user: uniqueUsers });
     } else {
       res.status(401).json({ error: 'Invalid credentials' });
     }
   } catch (err) {
+    console.error('Login error:', err.message);
     res.status(500).json({ error: 'Database error' });
   }
 };
